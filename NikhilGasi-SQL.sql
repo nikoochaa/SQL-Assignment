@@ -13,13 +13,13 @@ select * from customer;
 select * from sales;
 
 
-/*Select all products with brand “Cacti Plus”*/
+/*Select all products with brand â€œCacti Plusâ€*/
 
 select * from product
 where brand='Cacti Plus';
 
 
-/*Count of total products with product category=”Skin Care”*/
+/*Count of total products with product category=â€Skin Careâ€*/
 
 select count(*) 'Skin Care'from product
 where category='Skin Care';
@@ -31,7 +31,7 @@ select count (*) 'MRP>100'from product
 where mrp>100;
 
 
-/*Count of total products with product category=”Skin Care” and MRP more than 100*/
+/*Count of total products with product category=â€Skin Careâ€ and MRP more than 100*/
 
 select count (*) 'Skincare and MRP' from product
 where category ='Skin Care' and mrp>100;
@@ -62,15 +62,15 @@ select * from product
 where (category='Skin Care' or category='Hair Care') and mrp>100;
 
 
-/*Display   all   columns   with   Product   category=”Skin   Care”   and
-Brand=”Pondy”, and MRP more than 100*/
+/*Display   all   columns   with   Product   category=â€Skin   Careâ€   and
+Brand=â€Pondyâ€, and MRP more than 100*/
 
 select * from product
 where category='Skin Care' and brand='Pondy' and mrp>100;
 
 
-/*Display   all   columns   with   Product   category   =”Skin   Care”   or
-Brand=”Pondy”, and more than 100*/
+/*Display   all   columns   with   Product   category   =â€Skin   Careâ€   or
+Brand=â€Pondyâ€, and more than 100*/
 
 select * from product
 where (category='Skin Care' or brand='Pondy') and mrp>100;
@@ -82,7 +82,7 @@ select product_name from product
 where product_name like 'P%';
 
 
-/*Display  all product  names only with names Having letters “Bar”  in Between*/
+/*Display  all product  names only with names Having letters â€œBarâ€  in Between*/
 
 select product_name from product
 where product_name like '%Bar%';
@@ -91,8 +91,8 @@ where product_name like '%Bar%';
 /*Sales of those products which have been sold in more than two quantity in a bill*/
 select * from sales;
 
-select * from sales
-where qty>2;
+select bill_no, product_id, sum(qty) Quantity from sales
+group by bill_no, product_id having sum(qty)>2;
 
 
 /*Sales of those products which have been sold in more than two quantity throughout the bill*/
